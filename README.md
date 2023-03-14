@@ -18,7 +18,7 @@
 
 ## Detector Add-ons
 
-### [CompreFacef](./compreface)
+### [CompreFace](./compreface)
 
 ![amd64][amd64-shield]
 
