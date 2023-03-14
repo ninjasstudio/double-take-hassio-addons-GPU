@@ -30,16 +30,8 @@ start() {
 
 if grep -q avx /proc/cpuinfo
 then  
-  gpu=$(lspci | grep -i '.* vga .* nvidia .*')
-  shopt -s nocasematch
-
-  if [[ $gpu == *' nvidia '* ]]; then
-    printf 'Nvidia GPU is present:  %s\n' "$gpu"
-    start
-  else
-    printf 'Nvidia GPU is not present: %s\n' "$gpu"
-    exit 1
-  fi
+  nvidia-smi
+  start
 else
   echo "AVX not detected" >&2
   exit 1
