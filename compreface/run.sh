@@ -30,7 +30,6 @@ start() {
 
 if grep -q avx /proc/cpuinfo
 then  
-  nvidia-smi
   start
 else
   echo "AVX not detected" >&2
