@@ -23,6 +23,7 @@ start() {
         cp -rp /var/lib/postgresql/data /data/database
       else
         mkdir -p /data/database
+        mkdir -p /var/lib/postgresql/data
         chown postgres:postgres /data/database
         su - postgres -c "initdb -D /data/database"
       fi
