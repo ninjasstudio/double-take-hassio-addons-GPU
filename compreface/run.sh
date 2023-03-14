@@ -32,7 +32,7 @@ start() {
 
 
 
-  exec /usr/bin/supervisord
+ supervisorctl start
 }
 
 
