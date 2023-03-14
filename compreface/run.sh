@@ -30,7 +30,7 @@ start() {
     fi
   fi
 
-  chown -R postgres:postgres "$PGDATA"
+
 
   exec /usr/bin/supervisord
 }
