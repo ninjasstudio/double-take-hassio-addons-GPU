@@ -24,8 +24,8 @@ start() {
       else
         mkdir -p /data/database
         mkdir -p /var/lib/postgresql/data
-        chown postgres:postgres /data/database
-        su - postgres -c "initdb -D /data/database"
+
+        echo "Initializing database" >&2
       fi
     fi
   fi
