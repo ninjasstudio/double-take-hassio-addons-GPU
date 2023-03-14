@@ -17,7 +17,15 @@ start() {
   then
     if [ ! -d  /data/database ]
     then
+      echo "Copying database to /data/database" >&2
+      if [ -d /var/lib/postgresql/data ]
+      then
         cp -rp /var/lib/postgresql/data /data/database
+      else
+        mkdir -p /data/database
+        chown postgres:postgres /data/database
+        su - postgres -c "initdb -D /data/database"
+      fi
     fi
   fi
 
@@ -29,7 +37,7 @@ start() {
 
 
 if grep -q avx /proc/cpuinfo
-then  
+then
   start
 else
   echo "AVX not detected" >&2
