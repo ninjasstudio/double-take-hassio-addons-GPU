@@ -1,7 +1,7 @@
 {
-  "name": "double-take-hassio-addons",
+  "name": "double-take-hassio-addons-gpu",
   "version": "1.0.0",
-  "description": "Double Take Hass.io Add-ons",
+  "description": "Double Take Hass.io Add-ons GPU Compreface Fork",
   "scripts": {
     "prepare": "husky install"
   },
