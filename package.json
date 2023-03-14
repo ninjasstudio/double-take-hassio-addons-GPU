@@ -1,6 +1,6 @@
 {
-  "name": "double-take-hassio-addons-gpu  ",
-  "version": "1.0.1",
+  "name": "double-take-hassio-addons ",
+  "version": "1.1.22",
   "description": "Double Take Hass.io Add-ons",
   "scripts": {
     "prepare": "husky install"
