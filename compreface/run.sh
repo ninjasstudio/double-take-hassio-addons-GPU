@@ -7,7 +7,7 @@
 set -euo pipefail
 
 start() {
-  echo "Starting CompreFace" >&2
+  echo "Starting CompreFace GPU" >&2
   values=$(cat /data/options.json)
   for s in $(echo "$values" | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
       export "${s?}"
@@ -27,9 +27,19 @@ start() {
 }
 
 
+
 if grep -q avx /proc/cpuinfo
-then
-  start
+then  
+  gpu=$(lspci | grep -i '.* vga .* nvidia .*')
+  shopt -s nocasematch
+
+  if [[ $gpu == *' nvidia '* ]]; then
+    printf 'Nvidia GPU is present:  %s\n' "$gpu"
+    start
+  else
+    printf 'Nvidia GPU is not present: %s\n' "$gpu"
+    exit 1
+  fi
 else
   echo "AVX not detected" >&2
   exit 1
