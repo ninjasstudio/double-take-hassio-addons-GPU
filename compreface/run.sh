@@ -32,14 +32,14 @@ start() {
     chown -R postgres:postgres $PGDATA
     chmod 700 $PGDATA
 
-    echo Starting compreface-postgres-db
-    supervisorctl start compreface-postgres-db
+
 }
 
 
 
 if grep -q avx /proc/cpuinfo
 then
+start compreface-postgres-db
   start
 else
   echo "AVX not detected" >&2
