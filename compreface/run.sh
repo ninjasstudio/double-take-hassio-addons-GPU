@@ -1,9 +1,4 @@
 #!/bin/bash
-#
-# Entrypoint
-#
-# Ensure persistent data is stored in /data/ and then start the stack
-
 
 start() {
   echo "Starting CompreFace GPU"
@@ -27,20 +22,13 @@ start() {
       fi
     fi
   fi
-
-   # change permissions in case they were corrupted
-   # chown -R postgres:postgres $PGDATA
-   # chmod 700 $PGDATA
-
-
 }
 
 
 
 if grep -q avx /proc/cpuinfo
 then
-start compreface-postgres-db
-  start
+start
 else
   echo "AVX not detected" >&2
   exit 1
