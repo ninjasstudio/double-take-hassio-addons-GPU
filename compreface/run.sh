@@ -4,10 +4,9 @@
 #
 # Ensure persistent data is stored in /data/ and then start the stack
 
-set -euo pipefail
 
 start() {
-  echo "Starting CompreFace GPU" >&2
+  echo "Starting CompreFace GPU"
   values=$(cat /data/options.json)
   for s in $(echo "$values" | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
       export "${s?}"
@@ -24,15 +23,17 @@ start() {
       else
         mkdir -p /data/database
         mkdir -p /var/lib/postgresql/data
-
         echo "Initializing database" >&2
       fi
     fi
   fi
 
+   # change permissions in case they were corrupted
+    chown -R postgres:postgres $PGDATA
+    chmod 700 $PGDATA
 
-
- supervisorctl start
+    echo Starting compreface-postgres-db
+    supervisorctl start compreface-postgres-db
 }
 
 
