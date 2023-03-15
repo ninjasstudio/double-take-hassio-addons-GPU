@@ -29,8 +29,8 @@ start() {
   fi
 
    # change permissions in case they were corrupted
-    chown -R postgres:postgres $PGDATA
-    chmod 700 $PGDATA
+   # chown -R postgres:postgres $PGDATA
+   # chmod 700 $PGDATA
 
 
 }
